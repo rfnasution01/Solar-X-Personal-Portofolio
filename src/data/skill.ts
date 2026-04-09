@@ -1,33 +1,80 @@
-import type { SkillsData } from "@/types/dashboard";
+// src/data/skills.ts
 
-export const skills: SkillsData = {
-	title: "What I Do",
-	description:
-		"I manage and improve financial systems with accuracy and clarity.",
-	groups: [
+import type { IconType } from "react-icons";
+import {
+	FaCompass,
+	FaDrawPolygon,
+	FaTruckLoading,
+	FaShieldAlt,
+	FaGlobeAmericas,
+	FaFileAlt,
+	FaMountain,
+} from "react-icons/fa";
+import { SiAutodesk, SiArcgis, SiSap } from "react-icons/si";
+
+export type SkillsSectionData = {
+	title: string;
+	description: string;
+	stats: {
+		label: string;
+		value: string;
+	}[];
+};
+
+export type SkillCategory = {
+	title: string;
+	items: {
+		name: string;
+		icon: IconType;
+	}[];
+};
+
+export const SKILLS_SECTION: SkillsSectionData = {
+	title: "Technical Skills",
+	description: `My skills demonstrate a comprehensive understanding of mining engineering 
+software and field operational standards, ensuring safe, efficient, 
+and high-yield mineral extraction.`,
+	stats: [
 		{
-			title: "What I Handle",
-			items: [
-				{ name: "Financial Statements", icon: "analytics" },
-				{ name: "Budget Planning", icon: "dashboard" },
-				{ name: "Cash Flow Management", icon: "system" },
-			],
+			label: "Years Experience",
+			value: "5+",
 		},
 		{
-			title: "What I Improve",
-			items: [
-				{ name: "Financial Accuracy", icon: "security" },
-				{ name: "Reporting Efficiency", icon: "automation" },
-				{ name: "Cost Optimization", icon: "integration" },
-			],
+			label: "Project Sites",
+			value: "12+",
 		},
 		{
-			title: "Business Capabilities",
-			items: [
-				{ name: "Tax Management", icon: "payment" },
-				{ name: "Financial Compliance", icon: "security" },
-				{ name: "Business Insights", icon: "strategy" },
-			],
+			label: "Safety Hours",
+			value: "10k+",
 		},
 	],
 };
+
+export const SKILL_CATEGORIES: SkillCategory[] = [
+	{
+		title: "Mining Software & Planning",
+		items: [
+			{ name: "Surpac (Geovia)", icon: FaDrawPolygon },
+			{ name: "Minescape", icon: FaMountain },
+			{ name: "AutoCAD", icon: SiAutodesk },
+			{ name: "ArcGIS", icon: SiArcgis },
+		],
+	},
+	{
+		title: "Operational Management",
+		items: [
+			{ name: "Fleet Management", icon: FaTruckLoading },
+			{ name: "Pit Supervision", icon: FaShieldAlt },
+			{ name: "Cost Control (SAP)", icon: SiSap },
+			{ name: "Geological Survey", icon: FaCompass },
+		],
+	},
+	{
+		title: "Reporting & Compliance",
+		items: [
+			{ name: "K3 Pertambangan", icon: FaShieldAlt },
+			{ name: "Environmental Reporting", icon: FaGlobeAmericas },
+			{ name: "Feasibility Studies", icon: FaFileAlt },
+		],
+	},
+];
