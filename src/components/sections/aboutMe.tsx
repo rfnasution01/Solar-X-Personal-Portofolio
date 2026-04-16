@@ -6,7 +6,10 @@ export function AboutMeSection() {
 	const data = ABOUT_DATA;
 
 	return (
-		<section className="relative flex flex-col gap-24 py-24 overflow-hidden">
+		<section
+			id="about"
+			className="relative flex flex-col gap-24 py-24 overflow-hidden"
+		>
 			{/* BACKGROUND GLOW */}
 			<motion.div
 				initial={{ opacity: 0 }}

@@ -6,7 +6,10 @@ export function HeroSection() {
 	const data = HERO_DATA;
 
 	return (
-		<section className="relative min-h-screen flex items-center overflow-hidden">
+		<section
+			id="hero"
+			className="relative min-h-screen flex items-center overflow-hidden"
+		>
 			{/* BACKGROUND GLOW */}
 			<div className="absolute top-[-100px] left-1/2 -translate-x-1/2 w-[700px] h-[700px] bg-primary opacity-10 blur-[140px]" />
 

@@ -7,7 +7,10 @@ export function ContactSection() {
 	const data = CONTACT_DATA;
 
 	return (
-		<section className="relative flex flex-col gap-10 pt-16 pb-10 border-t border-white/10 overflow-hidden">
+		<section
+			id="contact"
+			className="relative flex flex-col gap-10 pt-16 pb-10 border-t border-white/10 overflow-hidden"
+		>
 			{/* BACKGROUND GLOW */}
 			<motion.div
 				initial={{ opacity: 0 }}

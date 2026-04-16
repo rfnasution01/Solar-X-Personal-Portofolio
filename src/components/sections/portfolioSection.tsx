@@ -5,7 +5,10 @@ import dayjs from "dayjs";
 
 export function PortfolioSection() {
 	return (
-		<section className="relative flex flex-col gap-20 py-24 overflow-hidden">
+		<section
+			id="portfolio"
+			className="relative flex flex-col gap-20 py-24 overflow-hidden"
+		>
 			{/* BACKGROUND GLOW */}
 			<motion.div
 				initial={{ opacity: 0 }}

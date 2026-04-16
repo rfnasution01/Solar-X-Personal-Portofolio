@@ -1,7 +1,7 @@
 import type { JSX } from "react";
 import { FaHome } from "react-icons/fa";
-import { FaBriefcase, FaPhone, FaUser } from "react-icons/fa6";
-import { FiFileText } from "react-icons/fi";
+import { FaBriefcase, FaGraduationCap, FaPhone } from "react-icons/fa6";
+import { GrPersonalComputer } from "react-icons/gr";
 
 export type MenuType = {
 	nama: string;
@@ -18,12 +18,12 @@ export const Menu: MenuType[] = [
 	{
 		nama: "About Me",
 		url: "#about-me",
-		icon: <FaUser size={20} />,
+		icon: <FaGraduationCap size={20} />,
 	},
 	{
 		nama: "Skills",
 		url: "#skills",
-		icon: <FiFileText size={20} />,
+		icon: <GrPersonalComputer size={20} />,
 	},
 	{
 		nama: "Portfolio",

@@ -8,7 +8,7 @@ import {
 import { Menu } from "@/components/sections/menu";
 import { COLOR } from "@/data/colors";
 import clsx from "clsx";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 
 export default function App() {
 	const [hoveredId, setHoveredId] = useState<number | null>(null);
@@ -38,6 +38,48 @@ export default function App() {
 			block: "start",
 		});
 	};
+
+	useEffect(() => {
+		const sections = [
+			{ name: "Home", ref: heroRef },
+			{ name: "About Me", ref: aboutMeRef },
+			{ name: "Skills", ref: skillRef },
+			{ name: "Portfolio", ref: portfolioRef },
+			{ name: "Contact", ref: contactRef },
+		];
+
+		const observer = new IntersectionObserver(
+			(entries) => {
+				entries.forEach((entry) => {
+					if (entry.isIntersecting) {
+						const found = sections.find(
+							(sec) => sec.ref.current === entry.target,
+						);
+						if (found) {
+							setMenu(found.name);
+						}
+					}
+				});
+			},
+			{
+				threshold: 0.5, // 50% section terlihat baru dianggap aktif
+			},
+		);
+
+		sections.forEach((section) => {
+			if (section.ref.current) {
+				observer.observe(section.ref.current);
+			}
+		});
+
+		return () => {
+			sections.forEach((section) => {
+				if (section.ref.current) {
+					observer.unobserve(section.ref.current);
+				}
+			});
+		};
+	}, []);
 
 	return (
 		<div
@@ -70,7 +112,6 @@ export default function App() {
 								onMouseLeave={() => setHoveredId(null)}
 								onClick={(e) => {
 									e.preventDefault();
-									setMenu(item?.nama);
 									handleScrollToSection(item?.nama as keyof typeof sectionRefs);
 								}}
 								className={clsx(
