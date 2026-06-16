@@ -5,8 +5,7 @@ import {
 	PortfolioSection,
 	SkillSection,
 } from "@/components/sections";
-import { Menu } from "@/components/sections/menu";
-import { COLOR } from "@/data/colors";
+import { SITE_DATA } from "@/data/site";
 import clsx from "clsx";
 import { useState, useRef, useEffect } from "react";
 
@@ -62,7 +61,7 @@ export default function App() {
 				});
 			},
 			{
-				threshold: 0.5, // 50% section terlihat baru dianggap aktif
+				threshold: 0.5,
 			},
 		);
 
@@ -84,35 +83,35 @@ export default function App() {
 	return (
 		<div
 			className="relative flex min-h-screen w-full"
-			style={{ backgroundColor: COLOR.background }}
+			style={{ backgroundColor: SITE_DATA.theme.background }}
 		>
 			{/* ================= SIDEBAR ================= */}
 			<aside className="fixed left-0 top-0 bottom-0 hidden md:flex items-center justify-center z-50">
 				<div
 					className="flex flex-col text-white"
-					style={{ backgroundColor: COLOR.background_secondary }}
+					style={{ backgroundColor: SITE_DATA.theme.backgroundSecondary }}
 				>
 					{/* TRIANGLE TOP */}
 					<div
 						className="h-0 w-0 border-l-[4rem] border-t-[4rem] border-[#4a4a53] border-t-transparent"
 						style={{
-							backgroundColor: COLOR.background,
+							backgroundColor: SITE_DATA.theme.background,
 						}}
 					/>
 
-					{Menu?.map((item, idx) => {
+					{SITE_DATA.menu.map((item, idx) => {
 						const isActive =
-							menu === item?.nama || (menu === "" && item?.nama === "Home");
+							menu === item.name || (menu === "" && item.name === "Home");
 
 						return (
 							<a
 								key={idx}
-								href={item?.url}
+								href={item.url}
 								onMouseEnter={() => setHoveredId(idx)}
 								onMouseLeave={() => setHoveredId(null)}
 								onClick={(e) => {
 									e.preventDefault();
-									handleScrollToSection(item?.nama as keyof typeof sectionRefs);
+									handleScrollToSection(item.name as keyof typeof sectionRefs);
 								}}
 								className={clsx(
 									"group relative flex h-[4rem] w-[4rem] items-center border-b border-gray-600 cursor-pointer",
@@ -136,7 +135,7 @@ export default function App() {
 									})}
 								>
 									<div className="flex h-[3.1rem] w-[3.1rem] items-center justify-center text-base">
-										{item?.icon}
+										<item.icon size={20} />
 									</div>
 								</div>
 
@@ -145,7 +144,7 @@ export default function App() {
 									<div className="absolute left-full top-1/2 -translate-y-1/2 flex items-center">
 										<div className="flex h-[3.1rem] items-center rounded-r-lg bg-primary px-5 text-black shadow-md">
 											<span className="text-[0.85rem] font-semibold uppercase tracking-wide whitespace-nowrap">
-												{item?.nama}
+												{item.name}
 											</span>
 										</div>
 									</div>
@@ -158,7 +157,7 @@ export default function App() {
 					<div
 						className="h-0 w-0 border-b-[4rem] border-l-[4rem] border-[#4a4a53] border-b-transparent"
 						style={{
-							backgroundColor: COLOR.background,
+							backgroundColor: SITE_DATA.theme.background,
 						}}
 					/>
 				</div>

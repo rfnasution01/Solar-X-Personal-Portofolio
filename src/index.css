@@ -222,7 +222,7 @@ button {
 	);
 }
 
-/* Scroll halus */
+/* Smooth scrolling */
 html {
 	scroll-behavior: smooth;
 }

@@ -1,10 +1,8 @@
-import { CONTACT_DATA } from "@/data/contact";
-import { HERO_DATA } from "@/data/hero";
+import { SITE_DATA } from "@/data/site";
 import { motion } from "framer-motion";
-import { FaWhatsapp, FaLinkedin, FaEnvelope } from "react-icons/fa";
 
 export function ContactSection() {
-	const data = CONTACT_DATA;
+	const data = SITE_DATA.contact;
 
 	return (
 		<section
@@ -28,11 +26,11 @@ export function ContactSection() {
 				className="flex flex-col items-center text-center gap-4"
 			>
 				<h3 className="text-white text-xl md:text-2xl font-semibold">
-					Let’s Build Something Great Together
+					{data.headline}
 				</h3>
 
 				<p className="text-gray-400 max-w-md">
-					Open for freelance, collaboration, or just a friendly chat.
+					{data.description}
 				</p>
 			</motion.div>
 
@@ -51,30 +49,21 @@ export function ContactSection() {
 				}}
 				className="flex justify-center gap-6"
 			>
-				{[
-					{
-						href: `https://api.whatsapp.com/send?phone=${data.whatsapp}`,
-						icon: FaWhatsapp,
-						label: "WhatsApp",
-					},
-					{
-						href: data.linkedin,
-						icon: FaLinkedin,
-						label: "LinkedIn",
-					},
-					{
-						href: `mailto:${data.email}`,
-						icon: FaEnvelope,
-						label: "Email",
-					},
-				].map((item, i) => {
+				{data.channels.map((item, i) => {
+					const href =
+						item.type === "whatsapp"
+							? `https://api.whatsapp.com/send?phone=${data.whatsapp}`
+							: item.type === "linkedin"
+								? data.linkedin
+								: `mailto:${data.email}`;
 					const Icon = item.icon;
 
 					return (
 						<motion.a
 							key={i}
-							href={item.href}
-							target="_blank"
+							href={href}
+							target={item.type === "email" ? undefined : "_blank"}
+							rel={item.type === "email" ? undefined : "noreferrer"}
 							initial={{ opacity: 0, y: 30 }}
 							animate={{ opacity: 1, y: 0 }}
 							whileHover={{ scale: 1.15, y: -4 }}
@@ -106,7 +95,7 @@ export function ContactSection() {
 				transition={{ delay: 0.3 }}
 				className="text-center text-gray-500 text-xs mt-6"
 			>
-				© {new Date().getFullYear()} {HERO_DATA?.headlines?.[0]}. All rights
+				© {new Date().getFullYear()} {SITE_DATA.hero.headlines[0]}. All rights
 				reserved.
 			</motion.div>
 		</section>

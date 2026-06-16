@@ -1,9 +1,9 @@
-import { HERO_DATA } from "@/data/hero";
+import { SITE_DATA } from "@/data/site";
 import { ReactTyped } from "react-typed";
 import { motion } from "framer-motion";
 
 export function HeroSection() {
-	const data = HERO_DATA;
+	const data = SITE_DATA.hero;
 
 	return (
 		<section
@@ -24,7 +24,7 @@ export function HeroSection() {
 					{/* HEADLINE */}
 					<h1 className="text-primary font-bold text-[clamp(2.5rem,6vw,4.5rem)] leading-tight drop-shadow-[0_0_20px_#99FF06]">
 						<ReactTyped
-							strings={data.headlines}
+							strings={[...data.headlines]}
 							typeSpeed={80}
 							backSpeed={40}
 							loop
@@ -58,6 +58,7 @@ export function HeroSection() {
 						transition={{ delay: 0.7 }}
 						href={`https://api.whatsapp.com/send?phone=${data.phone}`}
 						target="_blank"
+						rel="noreferrer"
 						className="relative w-fit px-8 py-3 rounded-xl bg-primary text-black font-semibold overflow-hidden group"
 					>
 						<span className="relative z-10">Hire Me</span>
@@ -82,7 +83,7 @@ export function HeroSection() {
 						{/* FLOATING ANIMATION */}
 						<motion.img
 							src={data.image}
-							alt="profile"
+							alt="Alex Morgan profile portrait"
 							className="relative w-[320px] h-[320px] object-cover rounded-full border border-white/10 shadow-[0_0_40px_rgba(153,255,6,0.2)]"
 							animate={{ y: [0, -12, 0] }}
 							transition={{

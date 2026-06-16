@@ -1,8 +1,8 @@
-import { SKILL_CATEGORIES, SKILLS_SECTION } from "@/data/skill";
+import { SITE_DATA } from "@/data/site";
 import { motion } from "framer-motion";
 
 export function SkillSection() {
-	const data = SKILLS_SECTION;
+	const data = SITE_DATA.skills;
 
 	return (
 		<section
@@ -62,7 +62,7 @@ export function SkillSection() {
 
 			{/* ================= SKILL CARDS ================= */}
 			<div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-				{SKILL_CATEGORIES.map((category, idx) => (
+				{data.categories.map((category, idx) => (
 					<motion.div
 						key={idx}
 						initial={{ opacity: 0, y: 50 }}

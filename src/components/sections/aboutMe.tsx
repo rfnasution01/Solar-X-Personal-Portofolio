@@ -1,9 +1,8 @@
-import { ABOUT_DATA } from "@/data/about";
-import { EXPERIENCE_DATA } from "@/data/experience";
+import { SITE_DATA } from "@/data/site";
 import { motion } from "framer-motion";
 
 export function AboutMeSection() {
-	const data = ABOUT_DATA;
+	const data = SITE_DATA.about;
 
 	return (
 		<section
@@ -76,7 +75,7 @@ export function AboutMeSection() {
 					{/* LINE */}
 					<div className="absolute left-5 top-0 bottom-0 w-[2px] bg-gradient-to-b from-primary/40 via-white/10 to-transparent"></div>
 
-					{EXPERIENCE_DATA.map((exp, i) => (
+					{data.experience.map((exp, i) => (
 						<motion.div
 							key={i}
 							initial={{ opacity: 0, x: 40 }}
